@@ -59,11 +59,19 @@ Individuals with more than 30% missing data or less than 50% mapping efficiency 
 
 Mapping efficiency was assessed using the scripts in the [*Philornis* data-processing repository](https://github.com/). See `04_mapping.sh` for the mapping-efficiency workflow.
 
-### 4. Identify high-confidence autosomal scaffolds using BeXY
+### 4. Infer scaffold classifications and individual karyotypes using BeXY
 
-BeXY was used to classify scaffolds as autosomal or sex-linked and identify high-confidence autosomal scaffolds. This analysis was performed once using the Galápagos-only data. The resulting autosomal scaffold list was applied to both the Galápagos-only and Galápagos–mainland datasets.
+BeXY ([Caduff et al., 2024](https://doi.org/10.1111/1755-0998.13913); [software repository](https://bitbucket.org/WegmannLab/bexy.git)) was used to infer scaffold karyotype classifications and individual genetic karyotypes in parallel. Scaffold classifications were based on posterior probabilities for four categories: autosome, X, Y and different. Individual karyotypes were inferred from posterior probabilities for seven possible karyotypes (XX, XY, X, XXY, XYY, XXX and XXYY). These analyses were performed once using the Galápagos-only data. The resulting high-confidence autosomal scaffold list was subsequently applied to both the Galápagos-only and Galápagos–mainland datasets. Individual karyotype results were retained for comparison with morphological sex and were not used for filtering.
 
-### 5. SNP calling restricted to autosomal scaffolds
+### 5a. Summarise scaffold classifications and identify high-confidence autosomes
+
+An R script was used to summarise BeXY scaffold posterior probabilities, assign each scaffold to its most probable category, and examine the distribution of posterior probabilities across categories. Scaffolds with a posterior probability greater than 0.99 of being autosomal were extracted as high-confidence autosomes for subsequent SNP filtering. Scaffold classifications and posterior probabilities were also summarised and visualised to assess the confidence of assignments.
+
+### 5b. Summarise individual karyotype classifications
+
+An R script was used to summarise BeXY posterior probabilities for individual karyotypes and assign each individual to the karyotype with the highest posterior probability. The distribution of inferred karyotypes and their posterior probabilities was examined and visualised. These results were used to compare inferred genetic karyotypes with morphological sex; individual karyotype assignments were not used to filter individuals.
+
+### 6. SNP calling restricted to autosomal scaffolds
 
 ANGSD was used to call SNPs restricted to the high-confidence autosomal scaffolds identified by BeXY, using the filtered BAM lists. Genotype likelihoods in Beagle format and BCF files containing hard-called genotypes were generated.
 
@@ -76,27 +84,27 @@ Filtering settings included:
 - SNP significance threshold: 1e-6.
 - Triallelic-site filtering: `-rmTriallelic 0.05`.
 
-### 6. Estimate pairwise relatedness
+### 7. Estimate pairwise relatedness
 
 The autosomal BCF was converted to VCF format, and sample identifiers were standardised. VCFtools `--relatedness2` was used to estimate pairwise relatedness. Self-comparisons were removed from the resulting pairwise relatedness table.
 
-### 7. Identify and remove highly related individuals
+### 8. Identify and remove highly related individuals
 
 Pairs with kinship estimates greater than 0.0884 were identified. Highly related individuals were removed from the sample lists before subsequent SNP calling.
 
-### 8. SNP calling after removing related individuals
+### 9. SNP calling after removing related individuals
 
 ANGSD was rerun using the updated BAM list, restricting SNP calling to the high-confidence autosomal scaffolds. The mapping, base-quality, site-coverage, minor allele frequency, SNP significance and triallelic-site filters were applied again. Genotype likelihoods, genotype posterior probabilities and hard-called genotypes were generated.
 
-### 9. Filter variants by Hardy–Weinberg equilibrium
+### 10. Filter variants by Hardy–Weinberg equilibrium
 
 Variants with Hardy–Weinberg equilibrium (HWE) p-values below 1e-6 were excluded using ANGSD.
 
-### 10. Estimate linkage disequilibrium with ngsLD
+### 11. Estimate linkage disequilibrium with ngsLD
 
 Pairwise linkage disequilibrium (LD) was estimated using `ngsLD`, with genotype likelihoods from the ANGSD Beagle output and scaffold and position information extracted from the corresponding MAF file. The resulting pairwise LD file was used as input for `prune_graph`.
 
-### 11. Prune linked SNPs with prune_graph
+### 12. Prune linked SNPs with prune_graph
 
 `prune_graph` was used to identify unlinked SNPs based on the pairwise LD estimates from `ngsLD`. The pruning criteria were:
 
@@ -105,7 +113,7 @@ Pairwise linkage disequilibrium (LD) was estimated using `ngsLD`, with genotype 
 
 The retained SNP positions were reformatted and indexed for use with ANGSD.
 
-### 12. Generate the final unlinked SNP set
+### 13. Generate the final unlinked SNP set
 
 ANGSD was rerun using the indexed positions file produced by `prune_graph`, with the `-sites` option restricting the analysis to the retained unlinked SNPs. Mapping-quality and base-quality filters were retained. SNP and minor allele frequency thresholds were not reapplied because the input positions had already undergone SNP filtering and LD pruning.
 
