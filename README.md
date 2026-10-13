@@ -43,66 +43,73 @@ Software-specific installation instructions and commands are documented in the r
 
 ## SNP filtering workflow
 
-The workflow below describes the main stages of processing and filtering low-coverage genomic data. Scripts are intended to be run sequentially, with output files from each stage used as inputs to subsequent stages.
+The workflow below describes the main stages of processing and filtering low-coverage genomic data for the Galápagos-only 2024 and Galápagos–mainland datasets. Scripts are intended to be run sequentially, with output files from each stage used as inputs to subsequent stages.
 
-### 1. Initial sample filtering
+### 1. Initial SNP calling
 
-Individuals were filtered based on missing data and mapping efficiency. Individuals with more than 30% missing data or less than 50% mapping efficiency were excluded. Highly related individuals were subsequently removed based on pairwise relatedness estimates.
+ANGSD was used for initial SNP calling from the BAM files, generating BCF files containing hard-called genotypes for assessing individual missingness and genotype likelihoods for subsequent analyses.
 
-For the Galápagos-only 2024 dataset, 169 individuals remained after these filtering steps, with a mean sequencing depth of 3.27×.
+### 2. Calculate individual missingness using VCFtools
 
-### 2. Identify high-confidence autosomal scaffolds
+The initial BCF file was converted to VCF format, and sample identifiers were standardised. VCFtools was used to calculate per-individual missingness using `--missing-indv`.
 
-High-confidence autosomal scaffolds were identified using the Galápagos-only data. The resulting scaffold list was used to restrict downstream SNP calling to autosomal regions.
+### 3. Exclude individuals failing missingness or mapping-efficiency thresholds
 
-The same scaffold list was applied to the Galápagos–mainland dataset.
+Individuals with more than 30% missing data or less than 50% mapping efficiency were excluded. The remaining BAM files were used for subsequent SNP calling.
 
-### 3. ANGSD SNP calling and filtering
+Mapping efficiency was assessed using the scripts in the [*Philornis* data-processing repository](https://github.com/). See `04_mapping.sh` for the mapping-efficiency workflow.
 
-ANGSD was used to estimate genotype likelihoods and identify SNPs using the filtered BAM list and high-confidence autosomal scaffolds.
+### 4. Identify high-confidence autosomal scaffolds using BeXY
 
-Key settings for the Galápagos-only 2024 dataset included:
+BeXY was used to classify scaffolds as autosomal or sex-linked and identify high-confidence autosomal scaffolds. This analysis was performed once using the Galápagos-only data. The resulting autosomal scaffold list was applied to both the Galápagos-only and Galápagos–mainland datasets.
+
+### 5. SNP calling restricted to autosomal scaffolds
+
+ANGSD was used to call SNPs restricted to the high-confidence autosomal scaffolds identified by BeXY, using the filtered BAM lists. Genotype likelihoods in Beagle format and BCF files containing hard-called genotypes were generated.
+
+Filtering settings included:
 
 - Minimum mapping quality: 20.
 - Minimum base quality: 20.
-- Minimum number of individuals per site: 85 (50% of the 169 individuals).
+- Minimum site coverage: data from at least 50% of individuals.
 - Minimum minor allele frequency: 0.02.
 - SNP significance threshold: \(1 \times 10^{-6}\).
 - Triallelic-site filtering: `-rmTriallelic 0.05`.
-- HWE filtering: exclude variants with HWE p-values below \(1 \times 10^{-6}\).
 
-The filtered output included genotype likelihoods in Beagle format and a MAF file for downstream analyses.
+### 6. Estimate pairwise relatedness
 
-### 4. Estimate linkage disequilibrium with ngsLD
+The autosomal BCF was converted to VCF format, and sample identifiers were standardised. VCFtools `--relatedness2` was used to estimate pairwise relatedness. Self-comparisons were removed from the resulting pairwise relatedness table.
 
-Pairwise linkage disequilibrium was estimated using `ngsLD`, with genotype likelihoods from the ANGSD Beagle output and SNP scaffold/position information extracted from the corresponding MAF file.
+### 7. Identify and remove highly related individuals
 
-For the Galápagos-only 2024 dataset, the analysis used:
+Pairs with kinship estimates greater than 0.0884 were identified. Highly related individuals were removed from the sample lists before subsequent SNP calling.
 
-- 169 individuals.
-- 55,070 SNPs.
-- 15 threads.
+### 8. SNP calling after removing related individuals
 
-No maximum distance limit was applied during LD estimation. The resulting pairwise LD file was used as input for `prune_graph`.
+ANGSD was rerun using the updated BAM list, restricting SNP calling to the high-confidence autosomal scaffolds. The mapping, base-quality, site-coverage, minor allele frequency, SNP significance and triallelic-site filters were applied again. Genotype likelihoods, genotype posterior probabilities and hard-called genotypes were generated.
 
-### 5. Prune linked SNPs with prune_graph
+### 9. Filter variants by Hardy–Weinberg equilibrium
 
-`prune_graph` was used to identify a set of unlinked SNPs based on the pairwise LD estimates from `ngsLD`.
+Variants with Hardy–Weinberg equilibrium (HWE) p-values below \(1 \times 10^{-6}\) were excluded using ANGSD.
 
-The pruning criteria were:
+### 10. Estimate linkage disequilibrium with ngsLD
+
+Pairwise linkage disequilibrium (LD) was estimated using `ngsLD`, with genotype likelihoods from the ANGSD Beagle output and scaffold and position information extracted from the corresponding MAF file. No maximum distance limit was applied during LD estimation. The resulting pairwise LD file was used as input for `prune_graph`.
+
+### 11. Prune linked SNPs with prune_graph
+
+`prune_graph` was used to identify unlinked SNPs based on the pairwise LD estimates from `ngsLD`. The pruning criteria were:
 
 - Physical distance: 50 kb.
 - LD threshold: \(r^2 \geq 0.5\) for SNP pairs within the specified distance.
 
 The retained SNP positions were reformatted and indexed for use with ANGSD.
 
-### 6. Generate the final unlinked SNP set in ANGSD
+### 12. Generate the final unlinked SNP set
 
-ANGSD was rerun using the indexed positions file produced by `prune_graph`, with the `-sites` option restricting the analysis to the retained unlinked SNPs.
+ANGSD was rerun using the indexed positions file produced by `prune_graph`, with the `-sites` option restricting the analysis to the retained unlinked SNPs. Mapping-quality and base-quality filters were retained. SNP and minor allele frequency thresholds were not reapplied because the input positions had already undergone SNP filtering and LD pruning.
 
-The mapping-quality and base-quality filters were retained. SNP and MAF thresholds were not reapplied at this stage because the input positions were derived from the previously filtered SNP set.
-
-**Final result:** 33,638 sites retained for downstream analyses of the Galápagos-only 2024 dataset.
+The resulting unlinked SNP sets were used for downstream population genomic analyses.
 
 ## Neutral population-genomic analyses
 
