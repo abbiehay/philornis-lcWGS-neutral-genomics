@@ -73,7 +73,7 @@ Filtering settings included:
 - Minimum base quality: 20.
 - Minimum site coverage: data from at least 50% of individuals.
 - Minimum minor allele frequency: 0.02.
-- SNP significance threshold: \(1 \times 10^{-6}\).
+- SNP significance threshold: 1e-6.
 - Triallelic-site filtering: `-rmTriallelic 0.05`.
 
 ### 6. Estimate pairwise relatedness
