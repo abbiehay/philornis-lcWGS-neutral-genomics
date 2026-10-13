@@ -2,9 +2,9 @@
 
 ## *Philornis downsi* Population Genomics: ANGSD Filtering and Neutral Analyses
 
-This repository contains scripts for SNP filtering and neutral population-genomic analyses of invasive *Philornis downsi* across the Galápagos Islands and between the Galápagos and mainland Ecuador. The workflow uses ANGSD for low-coverage whole-genome sequencing data and includes filtering for missing data, mapping quality, Hardy–Weinberg equilibrium (HWE), and linkage disequilibrium (LD).
+This repository contains scripts for SNP filtering and neutral population-genomic analyses of invasive *Philornis downsi* across the Galápagos Islands and between the Galápagos and mainland Ecuador. 
 
-Scripts and documentation will be added as the project develops. The scripts currently uploaded document the **Galápagos-only 2024 dataset**. The Galápagos–mainland dataset was filtered using the same general workflow, with one exception: high-confidence autosomal scaffolds were identified using the Galápagos-only data and then applied to the combined Galápagos–mainland dataset.
+The workflow uses ANGSD for low-coverage whole-genome sequencing data and includes filtering for missing data, autosomal scaffolds, relatedness, Hardy–Weinberg equilibrium (HWE), and linkage disequilibrium (LD).
 
 ## Contents
 
@@ -44,6 +44,8 @@ Software-specific installation instructions and commands are documented in the r
 ## SNP filtering workflow
 
 The workflow below describes the main stages of processing and filtering low-coverage genomic data for the Galápagos-only 2024 and Galápagos–mainland datasets. Scripts are intended to be run sequentially, with output files from each stage used as inputs to subsequent stages.
+
+The scripts currently uploaded document the **Galápagos-only 2024 dataset**. The Galápagos–mainland dataset was filtered using the same general workflow, with one exception: high-confidence autosomal scaffolds were identified using the Galápagos-only data and then applied to the combined Galápagos–mainland dataset.
 
 ### 1. Initial SNP calling
 
