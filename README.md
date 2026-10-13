@@ -90,7 +90,7 @@ ANGSD was rerun using the updated BAM list, restricting SNP calling to the high-
 
 ### 9. Filter variants by Hardy–Weinberg equilibrium
 
-Variants with Hardy–Weinberg equilibrium (HWE) p-values below \(1 \times 10^{-6}\) were excluded using ANGSD.
+Variants with Hardy–Weinberg equilibrium (HWE) p-values below 1e-6 were excluded using ANGSD.
 
 ### 10. Estimate linkage disequilibrium with ngsLD
 
