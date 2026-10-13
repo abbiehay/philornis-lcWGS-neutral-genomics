@@ -34,3 +34,6 @@ vcftools \
 --missing-indv
 
 # Output: out.imiss contains missingness statistics for each individual
+# Next: Exclude individuals with >30% missing data and <50% mapping efficiency 
+# (estimated using samtools depth; see the philornis_lcWGS_data_processing repository).
+# Re-run subsequent SNP calls using the filtered sample list.
