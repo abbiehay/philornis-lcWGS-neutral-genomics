@@ -94,7 +94,7 @@ Variants with Hardy–Weinberg equilibrium (HWE) p-values below 1e-6 were exclud
 
 ### 10. Estimate linkage disequilibrium with ngsLD
 
-Pairwise linkage disequilibrium (LD) was estimated using `ngsLD`, with genotype likelihoods from the ANGSD Beagle output and scaffold and position information extracted from the corresponding MAF file. No maximum distance limit was applied during LD estimation. The resulting pairwise LD file was used as input for `prune_graph`.
+Pairwise linkage disequilibrium (LD) was estimated using `ngsLD`, with genotype likelihoods from the ANGSD Beagle output and scaffold and position information extracted from the corresponding MAF file. The resulting pairwise LD file was used as input for `prune_graph`.
 
 ### 11. Prune linked SNPs with prune_graph
 
