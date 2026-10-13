@@ -12,13 +12,11 @@ To add
 
 ## Reference genome
 
-Reads were mapped to the female *Philornis downsi* reference genome, assembly GCA_019455685.1 (Romine et al., 2022).
+Reads were mapped to the *Philornis downsi* reference genome, assembly GCA_019455685.1 (Romine et al., 2022).
 
 **Reference genome citation:**
 
 Romine, M. G., Knutie, S. A., Crow, C. M., Vaziri, G. J., Chaves, J. A., Koop, J. A. H., & Lamichhaney, S. (2022). The genome sequence of the avian vampire fly (*Philornis downsi*), an invasive nest parasite of Darwin’s finches in Galápagos. *G3 Genes|Genomes|Genetics*, 12, jkab414. https://doi.org/10.1093/g3journal/jkab414
-
-High-confidence autosomal scaffolds were identified using the Galápagos-only data and used to restrict downstream analyses to autosomal regions. The same scaffold list was applied to the Galápagos–mainland dataset to maintain consistency between datasets.
 
 ## Data availability
 
