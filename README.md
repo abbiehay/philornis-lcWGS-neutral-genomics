@@ -101,7 +101,7 @@ Pairwise linkage disequilibrium (LD) was estimated using `ngsLD`, with genotype 
 `prune_graph` was used to identify unlinked SNPs based on the pairwise LD estimates from `ngsLD`. The pruning criteria were:
 
 - Physical distance: 50 kb.
-- LD threshold: \(r^2 \geq 0.5\) for SNP pairs within the specified distance.
+- LD threshold: r^2 >= 0.5 for SNP pairs within the specified distance.
 
 The retained SNP positions were reformatted and indexed for use with ANGSD.
 
