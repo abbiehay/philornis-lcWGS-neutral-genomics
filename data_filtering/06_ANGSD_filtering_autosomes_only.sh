@@ -54,7 +54,7 @@ ANGSD="path/to/angsd"
 -GL 2 -doGlf 2 -doMajorMinor 1 -doMaf 1 -minMaf 0.02 -SNP_pval 1e-6 -rmTriallelic 0.05 \
 -doBcf 1 -doGeno 4 \
 -nThreads 8 -nQueueSize 10 \
-> "${LOGS}/SNPcall_Galap25_autosome.log" 2>&1
+> "${LOGS}/SNPcall_Galap24_autosome.log" 2>&1
 
 # 66,403 sites retained
 # NEXT: Convert BCF to VCF (as per instructions in 02_ind_missing_data.sh) and infer highly related individuals using vcftools
