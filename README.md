@@ -36,6 +36,19 @@ Two metadata files provide sample-level information for the mainland Ecuador and
 
 `PCA_cluster` denotes groups assigned based on distinct clustering of individuals in PCA space. `PC1_score` and `PC2_score` represent individual scores along the first two principal components. `NA` indicates missing or unavailable metadata. BeXY-inferred karyotypes ([Caduff et al., 2024](https://doi.org/10.1111/1755-0998.13913)) were inferred from genotype likelihoods. Morphological sex was determined in the field and verified using high-resolution imaging for Galápagos individuals, or determined using microscopy for mainland individuals. Given the pronounced sexual dimorphism of *P. downsi* and the reliability of morphological sex determination, morphological sex was used as the primary sex classification.
 
+### Location abbreviations
+
+| Location | Abbreviation |
+|---|---|
+| Floreana Island | FL |
+| Isabela Island | IS |
+| San Cristóbal Island | SL |
+| Santa Cruz Island | SZ |
+| Santiago Island | SO |
+| Cerro Blanco, mainland Ecuador | CB |
+| Agua Blanca, mainland Ecuador | AB |
+| Loma Alta, mainland Ecuador | LA |
+
 ## Software environment and execution
 
 Processing scripts are executed as Bash scripts on a high-performance computing (HPC) server. Most software was installed using Miniconda.
