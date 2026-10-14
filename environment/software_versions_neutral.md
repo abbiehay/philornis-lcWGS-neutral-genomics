@@ -2,9 +2,9 @@
 
 The following software and packages were used in the neutral *Philornis downsi* analyses and data processing
 
-## Software
+## Software and package versions
 
-| Software | Version | Reference |
+| **Software** | **Version** | **Reference** |
 |---|---|---|
 | [FastQC](https://www.bioinformatics.babraham.ac.uk/projects/fastqc/) | 0.12.1 | Andrews (2010) |
 | [Trimmomatic](http://www.usadellab.org/cms/?page=trimmomatic) | 0.39 | Bolger et al. (2014) |
@@ -17,15 +17,15 @@ The following software and packages were used in the neutral *Philornis downsi* 
 | realSFS | ANGSD-associated | Korneliussen et al. (2014) |
 | thetaStat | ANGSD-associated | Korneliussen et al. (2014) |
 | [VCFtools](https://vcftools.github.io/) | 0.1.16 | Danecek et al. (2011) |
-| [BeXY](https://github.com) | 1.0 | Caduff et al. (2024) |
+| BeXY | 1.0 | Caduff et al. (2024) |
 | [ngsLD](https://github.com/fgvieira/ngsLD) | 1.2.1 | Fox et al. (2019) |
 | [prune_graph](https://github.com/fgvieira/prune_graph) | 0.3.4 | GitHub repository |
 | [ngsDist](https://github.com/fgvieira/ngsDist) | 1.0.10 | Vieira et al. (2016) |
 | [PCAngsd](https://github.com/Rosemeis/pcangsd) | 1.36.1 | Meisner and Albrechtsen (2018) |
-| [NGSadmix v33](https://github.com/fgvieira/ngsAdmix/blob/master/ngsAdmix.cpp) — Skotte et al. (2013) |
+| [NGSadmix](https://github.com/fgvieira/ngsAdmix/blob/master/ngsAdmix.cpp) | v33 | Skotte et al. (2013) |
 | [ADMIXTURE](https://dalexander.github.io/admixture/) | 1.3.0 | Alexander et al. (2009) |
-| [NeEstimator](https://github.com) | 2.1 | Do et al. (2014) |
-| [WGSassign](https://github.com) | 0.0 | DeSaix et al. (2024) |
+| NeEstimator | 2.1 | Do et al. (2014) |
+| WGSassign | 0.0 | DeSaix et al. (2024) |
 | [diveRsity](https://cran.r-project.org/package=diveRsity) | 1.9.90 | Keenan et al. (2013); Sundqvist et al. (2016) |
 | [R](https://www.r-project.org/) | 4.4.2 | R Core Team (2024) |
 | [ggplot2](https://ggplot2.tidyverse.org/) | 4.0.2 | Wickham (2016) |
@@ -36,7 +36,7 @@ The following software and packages were used in the neutral *Philornis downsi* 
 
 - ANGSD reports version `0.941-22-gc877e7f` (commit `c877e7f`) and HTSlib version `1.14-9-ge769401d`.
 - Software versions reflect the recorded installations and should be interpreted in conjunction with the analysis scripts.
-– Dependencies were generally managed via Miniconda
+– Dependencies were generally managed via Miniconda.
 
 ## References
 
@@ -92,4 +92,5 @@ Wickham, H. (2016). *ggplot2: Elegant Graphics for Data Analysis*. Springer. htt
 - [prune_graph](https://github.com/fgvieira/prune_graph)
 - [ngsLD](https://github.com/fgvieira/ngsLD)
 - [ngsDist](https://github.com/fgvieira/ngsDist)
-– [NGSadmix](https://github.com/fgvieira/ngsAdmix/blob/master/ngsAdmix.cpp)
+- [NGSadmix](https://github.com/fgvieira/ngsAdmix/blob/master/ngsAdmix.cpp)
+
