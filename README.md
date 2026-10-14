@@ -98,15 +98,6 @@ An R script was used to summarise BeXY posterior probabilities for individual ka
 
 ANGSD was used to call SNPs restricted to the high-confidence autosomal scaffolds identified by BeXY, using the filtered BAM lists. Genotype likelihoods in Beagle format and BCF files containing hard-called genotypes were generated.
 
-Filtering settings included:
-
-- Minimum mapping quality: 20.
-- Minimum base quality: 20.
-- Minimum site coverage: data from at least 50% of individuals.
-- Minimum minor allele frequency: 0.02.
-- SNP significance threshold: 1e-6.
-- Triallelic-site filtering: `-rmTriallelic 0.05`.
-
 ### 7. Estimate pairwise relatedness
 
 The autosomal BCF was converted to VCF format, and sample identifiers were standardised. VCFtools `--relatedness2` was used to estimate pairwise relatedness. Self-comparisons were removed from the resulting pairwise relatedness table.
