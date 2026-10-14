@@ -22,7 +22,7 @@ The following software and packages were used in the neutral *Philornis downsi* 
 | [prune_graph](https://github.com/fgvieira/prune_graph) | 0.3.4 | GitHub repository |
 | [ngsDist](https://github.com/fgvieira/ngsDist) | 1.0.10 | Vieira et al. (2016) |
 | [PCAngsd](https://github.com/Rosemeis/pcangsd) | 1.36.1 | Meisner and Albrechtsen (2018) |
-| [NGSadmix](https://github.com/fgvieira/ngsAdmix/blob/master/ngsAdmix.cpp) | v33 | Skotte et al. (2013) |
+| [NGSadmix](https://github.com/fgvieira/ngsAdmix/blob/master/ngsAdmix.cpp) | 33 | Skotte et al. (2013) |
 | [ADMIXTURE](https://dalexander.github.io/admixture/) | 1.3.0 | Alexander et al. (2009) |
 | NeEstimator | 2.1 | Do et al. (2014) |
 | WGSassign | 0.0 | DeSaix et al. (2024) |
