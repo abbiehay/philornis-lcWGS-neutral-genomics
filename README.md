@@ -2,6 +2,8 @@
 
 ## *Philornis downsi* Population Genomics: ANGSD Filtering and Neutral Analyses
 
+[![DOI](https://zenodo.org/badge/1415081192.svg)](https://doi.org/10.5281/zenodo.23357922)
+
 This repository contains scripts for SNP filtering and neutral population-genomic analyses of invasive *Philornis downsi* across the Galápagos Islands and between the Galápagos and mainland Ecuador. 
 
 The workflow uses ANGSD for low-coverage whole-genome sequencing data and includes filtering for missing data, autosomal scaffolds, relatedness, Hardy–Weinberg equilibrium (HWE), and linkage disequilibrium (LD).
