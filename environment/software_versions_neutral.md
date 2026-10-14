@@ -24,7 +24,7 @@ The following software and packages were used in the neutral *Philornis downsi* 
 | [PCAngsd](https://github.com/Rosemeis/pcangsd) | 1.36.1 | Meisner and Albrechtsen (2018) |
 | [NGSadmix](https://github.com/fgvieira/ngsAdmix/blob/master/ngsAdmix.cpp) | 33 | Skotte et al. (2013) |
 | [ADMIXTURE](https://dalexander.github.io/admixture/) | 1.3.0 | Alexander et al. (2009) |
-| NeEstimator | 2.1 | Do et al. (2014) |
+| NeEstimator2 | 2.1 | Do et al. (2014) |
 | WGSassign | 0.0 | DeSaix et al. (2024) |
 | [diveRsity](https://cran.r-project.org/package=diveRsity) | 1.9.90 | Keenan et al. (2013); Sundqvist et al. (2016) |
 | [R](https://www.r-project.org/) | 4.4.2 | R Core Team (2024) |
