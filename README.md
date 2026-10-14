@@ -6,10 +6,6 @@ This repository contains scripts for SNP filtering and neutral population-genomi
 
 The workflow uses ANGSD for low-coverage whole-genome sequencing data and includes filtering for missing data, autosomal scaffolds, relatedness, Hardy–Weinberg equilibrium (HWE), and linkage disequilibrium (LD).
 
-## Contents
-
-To add
-
 ## Reference genome
 
 Reads were mapped to the *Philornis downsi* reference genome, assembly GCA_019455685.1 (Romine et al., 2022).
