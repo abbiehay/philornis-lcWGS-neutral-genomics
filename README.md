@@ -158,8 +158,3 @@ Planned and forthcoming sections include:
 - **Additional neutral analyses:** further scripts and documentation will be added as the workflow develops.
 
 Scripts and documentation for these analyses will be added in future updates.
-
-
-## Citation
-
-If you use the reference genome, please cite Romine et al. (2022), as listed above. A repository citation and version-specific release information can be added here when the repository is formally released.
