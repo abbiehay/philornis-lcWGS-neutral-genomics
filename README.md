@@ -30,11 +30,13 @@ Raw sequencing reads and large intermediate files, including BAM files, are not 
 
 Two metadata files provide sample-level information for the mainland Ecuador and Galápagos *P. downsi* samples.
 
-- **`Mainland_sample_meta.csv`** contains metadata for the 24 mainland Ecuador samples retained in the Galápagos-mainland dataset, including sample ID, collection location and date, collector, nest characteristics, morphologically determined sex, fraction of missing genotypes, and mean sequencing depth.
+- **`Mainland_sample_meta.csv`** contains metadata for the 24 mainland Ecuador samples retained in the Galápagos–mainland dataset, including sample ID, collection location and date, collector, nest characteristics, morphologically determined sex, fraction of missing genotypes, and mean sequencing depth.
 
-- **`Galap2024_Meta_169Ind.csv`** contains metadata for the 169 individuals retained in the 2024 Galápagos genomic dataset. Fields include sample ID, island, geographic coordinates, capture method, nest information, morphologically determined sex, BeXY-inferred karyotype, PCA cluster, PC1 and PC2 scores, fraction of missing genotypes, mean sequencing depth, and sequencing batch.
+- **`Galap2024_Meta_169Ind.csv`** contains metadata for the 169 individuals retained in the 2024 Galápagos-only genomic dataset. Fields include sample ID, island, geographic coordinates, capture method, nest information, morphologically determined sex, BeXY-inferred karyotype, PCA cluster, PC1 and PC2 scores, fraction of missing genotypes, mean sequencing depth, sequencing batch, and whether each individual was also retained in the Galápagos–mainland dataset.
 
 `PCA_cluster` denotes groups assigned based on distinct clustering of individuals in PCA space. `PC1_score` and `PC2_score` represent individual scores along the first two principal components. `NA` indicates missing or unavailable metadata. BeXY-inferred karyotypes ([Caduff et al., 2024](https://doi.org/10.1111/1755-0998.13913)) were inferred from genotype likelihoods. Morphological sex was determined in the field and verified using high-resolution imaging for Galápagos individuals, or determined using microscopy for mainland individuals. Given the pronounced sexual dimorphism of *P. downsi* and the reliability of morphological sex determination, morphological sex was used as the primary sex classification.
+
+All individuals in `Galap2024_Meta_169Ind.csv` passed filtering for the Galápagos-only dataset. The `Fraction_Missingness` values reported in this file were calculated using the Galápagos-only dataset and do not reflect missingness in the Galápagos–mainland dataset. The `In_Galap-mainland_dataset?` column identifies individuals that also passed filtering for the Galápagos–mainland dataset, where fraction of missing genotypes was recalculated and some individuals no longer met the missingness threshold.
 
 ### Location abbreviations
 
