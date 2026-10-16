@@ -2,7 +2,7 @@
 # Pairwise relatedness was estimated using VCFtools --relatedness2 on the full genomic dataset.
 
 # Purpose:
-# 1. Identify highly related pairs using a kinship threshold of >0.0884 (half sibs or closer).
+# 1. Identify highly related pairs using a kinship threshold of >0.0884 (half sibs or closer) – one individual from each pair to be excluded.
 # 2. Annotate pairwise kinship estimates with sex and island metadata.
 # 3. Summarise relatedness by sex to investigate potential patterns of sex-biased migration.
 
